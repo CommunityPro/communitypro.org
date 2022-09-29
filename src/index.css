@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --bg-gradient: linear-gradient(80deg, #ffcd42, #e21143);
+  --yellowDark: #e9b72f;
+  --yellowMedium: #ffcd42;
+  --yellowLight: #ffdc7b;
 }
 
 * {
@@ -11,8 +13,4 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Plus Jakarta Sans", sans-serif;
-}
-
-h1 {
-  background-image: var(--bg-gradient);
 }
