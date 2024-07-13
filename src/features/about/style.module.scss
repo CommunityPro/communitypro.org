@@ -1,0 +1,171 @@
+@use "@/styles/base/utils" as *;
+
+.About {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	overflow-x: hidden;
+
+	.AboutHeader {
+		width: 100%;
+		max-width: 1200px;
+		height: 100vh;
+		align-items: center;
+		justify-content: center;
+
+		@include media("sm", "max") {
+			height: 60vh;
+			gap: 40px;
+		}
+
+		.AboutHeaderContent {
+			width: 50%;
+			height: 100%;
+			justify-content: center;
+			gap: 12px;
+
+			&:nth-child(2) {
+				align-items: center;
+				justify-content: end;
+				padding: 0 32px 0 0;
+			}
+
+			.Hero {
+				width: 450px;
+				aspect-ratio: 1/1;
+				background: center/cover no-repeat url("../../../public/assets/images/hands.png");
+				position: relative;
+
+				&::before {
+					width: 300%;
+					height: 100%;
+					background: var(--primary-100);
+					content: "";
+					position: absolute;
+					top: -30%;
+					left: 30%;
+					z-index: -1 !important;
+				}
+			}
+		}
+	}
+
+	.AboutContainer {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+
+		&--1 {
+			background-color: #202020;
+		}
+
+		&--2 {
+			background: #262626;
+		}
+
+		&--3 {
+			background: #181818;
+		}
+
+		&--4 {
+			background: #0d0d0d;
+		}
+
+		.Content {
+			width: 100%;
+			max-width: 1200px;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 100px 0;
+
+			&--about {
+				padding: 300px 0 100px;
+			}
+
+			.AboutText {
+				width: 540px;
+				height: 258px;
+				position: relative;
+
+				.Box {
+					width: 100%;
+					height: 100%;
+					background: var(--secondary);
+					position: absolute;
+					top: 0;
+					left: 0;
+					content: "";
+					z-index: 2 !important;
+					padding: 70px 20px 30px;
+					text-align: left;
+				}
+
+				&::before,
+				&::after {
+					border-radius: 50%;
+					background: var(--primary-100);
+					position: absolute;
+					content: "";
+				}
+
+				&::before {
+					width: 226px;
+					aspect-ratio: 1/1;
+					top: -45%;
+					left: -25%;
+				}
+
+				&::after {
+					width: 336px;
+					aspect-ratio: 1/1;
+					top: -70%;
+					left: 30%;
+				}
+			}
+
+			.Values {
+				width: 100%;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+
+				.Background {
+					width: 75%;
+					aspect-ratio: 2/1;
+					background: #181818;
+				}
+
+				.Cards {
+					width: 100%;
+					align-items: center;
+					justify-content: space-between;
+					position: absolute;
+					top: 50%;
+					left: 0;
+					transform: translateY(-50%);
+
+					.Card {
+						width: 311px;
+						aspect-ratio: 1.2/1;
+						align-items: start;
+						gap: 6px;
+						background: var(--secondary);
+						padding: 42px 30px;
+						text-align: left;
+					}
+				}
+			}
+
+			.Members {
+				width: 100%;
+				align-items: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 40px;
+			}
+		}
+	}
+}

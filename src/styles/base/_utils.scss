@@ -1,0 +1,279 @@
+$default-font-family:
+	-apple-system,
+	BlinkMacSystemFont,
+	Segoe UI,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	Fira Sans,
+	Droid Sans,
+	Helvetica Neue,
+	sans-serif;
+$default-browser-font-size: 16px;
+$base-font-size: 16px;
+
+$stacking-order: (
+	popper: 1400,
+);
+
+$breakpoints: (
+	"xs": 0,
+	"sm": 576px,
+	"md": 768px,
+	"lg": 992px,
+	"xl": 1200px,
+	"xxl": 1400px,
+);
+
+$spacing: (
+	"none": 0,
+	"xs": 0.25rem,
+	"sm": 0.5rem,
+	"md": 1rem,
+	"lg": 1.5rem,
+	"xl": 2rem,
+	"xxl": 3rem,
+);
+
+/// Returns the z-index of the specified element.
+/// @param {String} $element - The key for the element.
+/// @return {Number} The z-index for the element.
+
+@function z-index($element) {
+	$index: map-get($stacking-order, $element);
+
+	@if $index {
+		@return $index;
+	} @else {
+		@error 'z-index `#{$element}` in `#{$context}` not found.';
+	}
+}
+
+/// Returns the value in rem for a given pixel value.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in rem.
+
+@function rem($value) {
+	$unit: unit($value);
+
+	@if $value == 0 {
+		@return 0;
+	} @else if $unit == "rem" {
+		@return $value;
+	} @else if $unit == "px" {
+		@return calc($value / $base-font-size) * 1rem;
+	} @else if $unit == "em" {
+		@return $unit / 1em * 1rem;
+	} @else {
+		@error 'Value must be in px, em, or rem.';
+	}
+}
+
+@function bareRem($value) {
+	@return #{stripUnit($value) / stripUnit($base-font-size) * 1rem}rem;
+}
+
+@function spacing($type: "none") {
+	$property: map-get($spacing, $type);
+
+	@if $property {
+		@return $property;
+	} @else {
+		@error 'Spacing must be one of none, xs, sm, md, lg, xl, or xxl.';
+	}
+}
+
+/// media query mixin
+/// @param {String} $breakpoint - The breakpoint to be used.
+/// @param {String} $type - The type of media query to be used.
+/// @return {String} The media query.
+/// @example
+
+@mixin media($breakpoint: "md", $type: "min") {
+	$value: map-get($breakpoints, $breakpoint) or $breakpoint;
+
+	@if $value {
+		@if $type == "min" {
+			@media (min-width: #{$value}) {
+				@content;
+			}
+		} @else if $type == "max" {
+			@media (max-width: calc(#{$value} - 0.02px)) {
+				@content;
+			}
+		} @else {
+			@error 'Type must be either min or max.';
+		}
+	} @else {
+		@error 'Breakpoint must be one of xs, sm, md, lg, xl, or xxl.';
+	}
+}
+
+$typography: (
+	"h1": "h1",
+	"h2": "h2",
+	"h3": "h3",
+	"h4": "h4",
+	"h5": "h5",
+	"h6": "h6",
+	"p": "p",
+	"button": "p",
+	"a": "p",
+	"span": "p",
+	"regular": "p",
+	"small": "small",
+	"accent": "accent",
+	"caption": "caption",
+);
+
+@mixin typography($type: "regular") {
+	$property: map-get($typography, $type);
+
+	@if $property {
+		@include font-size($property);
+
+		@if $property == "h1" {
+			font-weight: 700;
+			letter-spacing: var(--letter-spacing-wider);
+			line-height: 140%;
+		} @else if $property == "h2" {
+			font-weight: 700;
+			letter-spacing: var(--letter-spacing-wide);
+			line-height: 140%;
+		} @else if $property == "h3" {
+			font-weight: 700;
+			letter-spacing: var(--letter-spacing-regular);
+			line-height: 140%;
+		} @else if $property == "h4" {
+			font-weight: 600;
+			letter-spacing: var(--letter-spacing-regular);
+			line-height: 120%;
+		} @else if $property == "h5" {
+			font-weight: 600;
+			letter-spacing: var(--letter-spacing-regular);
+			line-height: 120%;
+		} @else if $property == "h6" {
+			font-weight: 600;
+			letter-spacing: var(--letter-spacing-regular);
+			line-height: 110%;
+		} @else if $type == "button" {
+			font-weight: 500;
+			letter-spacing: calc(var(--letter-spacing-regular));
+			line-height: 130%;
+		} @else {
+			font-weight: 400;
+			letter-spacing: var(--letter-spacing-regular);
+			line-height: 1.65;
+		}
+	} @else {
+		@error 'Type must be one of h1, h2, h3, h4, h5, p, button, a, span, or regular.';
+	}
+}
+
+@mixin font-size($size: 1rem) {
+	$property: map-get($typography, $size);
+
+	@if $property {
+		font-size: var(--font-#{$property});
+	} @else {
+		font-size: rem($size);
+	}
+}
+
+@mixin custom-scrollbar {
+	scrollbar-width: 0;
+	scrollbar-color: #c2c2c2 transparent;
+	-ms-overflow-style: none;
+	transition: all 0.2s ease-in-out;
+
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+
+	@media (max-width: 768px) {
+		&::-webkit-scrollbar {
+			width: 0;
+			height: 0;
+		}
+	}
+
+	&:hover {
+		&::-webkit-scrollbar-thumb {
+			background-color: #c2c2c2;
+		}
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: transparent;
+		border-radius: 20px;
+		border: 3px solid transparent;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: #b3b3b3;
+	}
+
+	&::-webkit-scrollbar-thumb:active {
+		background-color: #9a9a9a;
+	}
+
+	&::-webkit-scrollbar-corner,
+	&::-webkit-scrollbar-button,
+	&::-webkit-scrollbar-resizer,
+	&::-webkit-scrollbar-gripper,
+	&::-webkit-scrollbar-gripper:hover,
+	&::-webkit-scrollbar-gripper:active,
+	&::-webkit-scrollbar-track-piece {
+		display: none;
+	}
+}
+
+$colors: (
+	"neutral": #16013c,
+	"primary-blue": #007bff,
+	// Assuming you want an actual blue color here
+);
+
+// @function color-variant($base-col: '#16013C', $level) {
+// 	$base-color: #16013c;
+
+// 	@each $level
+// 		in (10, 25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000)
+// 	{
+// 		$adjustment: if($level > 500, $level - 500, $level - 500) * 0.1;
+// 		$adjusted-color: if(
+// 			$level > 500,
+// 			lighten($base-color, $adjustment),
+// 			darken($base-color, -$adjustment)
+// 		);
+
+// 		@return $adjusted-color;
+// 	}
+// }
+
+@function color-variant($color-name, $level) {
+	// Ensure the base color is directly fetched as a color value from the map
+	$base-color: map-get($colors, $color-name) or $color-name;
+
+	// Check if the base color is indeed fetched; otherwise, return a warning or a fallback
+	@if type-of($base-color) != "color" {
+		@warn "The base color for `#{$color-name}` could not be found or is not a color.";
+		@return null;
+	}
+
+	// Calculate the adjustment based on the level provided
+	$adjustment: if($level > 500, ($level - 500) * 0.2, (500 - $level) * 0.2);
+
+	// Apply the adjustment
+	@if $level > 500 {
+		@return darken($base-color, $adjustment);
+	} @else {
+		@return lighten($base-color, $adjustment);
+	}
+}

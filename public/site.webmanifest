@@ -1,0 +1,22 @@
+{
+	"name": "CommunityPro",
+	"short_name": "CommunityPro",
+	"description": "",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "/meta/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/meta/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"screenshots": [{ "src": "/meta/screenshot.png" }],
+	"background_color": "#ffcdb2",
+	"theme_color": "#FFCD42",
+	"display": "standalone"
+}

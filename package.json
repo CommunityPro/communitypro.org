@@ -1,25 +1,49 @@
 {
-  "name": "comunitypro",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.1"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.0",
-    "autoprefixer": "^10.4.7",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.6",
-    "vite": "^3.0.0"
-  }
+	"name": "community-pro",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"prettier:write": "prettier --write \"./src/**/*.{ts,tsx}\"",
+		"prettier:check": "prettier --check \"./src/**/*.{ts,tsx}\"",
+		"build:check": "npm run prettier:check && npm run lint"
+	},
+	"dependencies": {
+		"@phosphor-icons/react": "^2.1.6",
+		"@radix-ui/react-accordion": "^1.2.0",
+		"@radix-ui/react-dialog": "^1.1.1",
+		"@radix-ui/react-hover-card": "^1.1.1",
+		"@radix-ui/react-slot": "^1.1.0",
+		"@radix-ui/themes": "^3.0.5",
+		"@tanstack/react-query": "^5.45.1",
+		"axios": "^1.7.2",
+		"class-variance-authority": "^0.7.0",
+		"classnames": "^2.5.1",
+		"clsx": "^2.1.1",
+		"framer-motion": "^11.2.11",
+		"lucide-react": "^0.395.0",
+		"next": "14.2.4",
+		"react": "^18",
+		"react-dom": "^18",
+		"tailwind-merge": "^2.3.0",
+		"tailwindcss-animate": "^1.0.7",
+		"zustand": "^4.5.2"
+	},
+	"devDependencies": {
+		"@tanstack/react-query-devtools": "^5.48.0",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.4",
+		"postcss": "^8",
+		"prettier": "^3.3.2",
+		"prettier-plugin-tailwindcss": "^0.6.5",
+		"sass": "^1.77.6",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5"
+	}
 }

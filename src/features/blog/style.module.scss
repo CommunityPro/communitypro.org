@@ -1,0 +1,57 @@
+@use "@/styles/base/utils" as *;
+
+.Blog {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	overflow-x: hidden;
+
+	.Header {
+		width: 100%;
+		max-width: 1200px;
+		height: 100vh;
+		align-items: center;
+		justify-content: center;
+
+		@include media("sm", "max") {
+			height: 60vh;
+			gap: 40px;
+		}
+
+		.HeaderContent {
+			width: 50%;
+			height: 100%;
+			justify-content: center;
+			gap: 12px;
+
+			&:nth-child(2) {
+				align-items: center;
+				justify-content: end;
+				padding: 0 32px 0 0;
+			}
+
+			.Hero {
+				width: 450px;
+				aspect-ratio: 1/1;
+			}
+		}
+	}
+}
+
+.Container {
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+
+	@include media("sm", "max") {
+		padding: 40px;
+	}
+
+	.Content {
+		width: 100%;
+		max-width: 1200px;
+		padding: 100px 0;
+	}
+}

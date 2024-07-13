@@ -1,0 +1,90 @@
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 900.0;
+*
+* available axes:
+
+* 'wght' (range from 300.0 to 900.0)
+
+*/
+
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 900.0;
+*
+* available axes:
+
+* 'wght' (range from 300.0 to 900.0)
+@font-face {
+	font-family: 'Recoleta';
+	src: url('../../../public/assets/fonts/Recoleta-Bold.woff2') format('woff2');
+	font-weight: 700 800;
+	font-display: swap;
+	font-style: normal;
+}
+*/
+@font-face {
+	font-family: "Prima Nova";
+	src: url("../../../public/assets/fonts/proximanova-bold.otf") format("otf");
+	font-weight: 700 800;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Prima Nova";
+	src: url("../../../public/assets/fonts/proximanova-semibold.otf") format("otf");
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Prima Nova";
+	src: url("../../../public/assets/fonts/proximanova-medium.otf") format("otf");
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Prima Nova";
+	src: url("../../../public/assets/fonts/proximanova-regular.otf") format("otf");
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Prima Nova";
+	src: url("../../../public/assets/fonts/proximanova-light.otf") format("otf");
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Trueno";
+	src: url("../../../public/assets/fonts/TruenoBd.woff") format("woff");
+	font-weight: 700 800;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Trueno";
+	src: url("../../../public/assets/fonts/TruenoSBd.woff") format("woff");
+	font-weight: 500 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Trueno";
+	src: url("../../../public/assets/fonts/TruenoRg.woff") format("woff");
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}

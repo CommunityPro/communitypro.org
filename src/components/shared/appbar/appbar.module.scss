@@ -1,0 +1,98 @@
+@use "@/styles/base/utils" as *;
+
+.Appbar {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 28px 0;
+	background: transparent;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 50 !important;
+
+	&--true {
+		background: var(--secondary);
+	}
+
+	.AppbarContent {
+		width: 100%;
+		max-width: 1200px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.AppbarButtons {
+			align-items: center;
+			gap: 40px;
+
+			button:active svg {
+				transition: transform 500ms ease-in-out;
+				animation: rotate 500ms ease-in-out;
+
+				@keyframes rotate {
+					to {
+						transform: rotate(360deg);
+					}
+				}
+			}
+		}
+
+		.AppbarLinks {
+			align-items: center;
+			gap: 24px;
+
+			.AppbarLink {
+				font-size: 14px;
+				font-weight: 600;
+				text-transform: capitalize;
+				transition: color 150ms ease-in-out;
+				position: relative;
+
+				&--active {
+					color: var(--primary-100);
+				}
+
+				&::before {
+					content: "";
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 0;
+					height: 1px;
+					border-radius: 4px;
+					background: var(--primary-100);
+					transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+					-moz-transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+					-webkit-transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+				}
+
+				&:hover {
+					color: var(--primary-100);
+				}
+
+				@media (hover: hover) and (pointer: fine) {
+					&:hover::before {
+						width: 100%;
+						left: 0;
+						right: auto;
+					}
+				}
+			}
+		}
+
+		.AppbarIcon {
+			padding: 6px;
+
+			svg {
+				color: var(--soft-white);
+				transition: color 150ms ease-in-out;
+
+				&:hover {
+					color: var(--primary-100);
+				}
+			}
+		}
+	}
+}

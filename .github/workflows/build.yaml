@@ -1,0 +1,30 @@
+name: build-check
+
+on:
+ pull_request:
+  branches:
+   - main
+   - staging
+   - dev
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: check-out
+     uses: actions/checkout@v3
+
+   - name: set-up-node
+     uses: actions/setup-node@v2
+     with:
+      node-version: 20
+
+   - name: install-deps
+     run: npm install
+
+   - name: build check
+     run: npm run build:check
+
+   - name: build
+     run: npm run build
