@@ -3,10 +3,11 @@ import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { cn } from "@/lib/utils";
+import { ErrorBoundary, QueryProvider } from "@/components/providers";
+import { cn } from "@/lib";
 
-const space_grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const space_grotesk = Space_Grotesk({ style: ["normal"], subsets: ["latin"], variable: "--font-space-grotesk" });
+const inter = Inter({ style: ["italic", "normal"], subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Community Pro",
@@ -21,9 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("h-full", "antialiased", space_grotesk.variable, inter.variable)}>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          {children}
-        </ThemeProvider>
+        <ErrorBoundary>
+          <QueryProvider>
+            <ThemeProvider attribute="class" defaultTheme="light">
+              {children}
+            </ThemeProvider>
+          </QueryProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

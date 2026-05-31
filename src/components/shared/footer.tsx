@@ -33,8 +33,20 @@ export const Footer = () => {
           </div>
         </div>
         <div className="flex w-full items-center justify-between py-2 text-sm">
-          <p>&copy;{new Date().getFullYear()}. All rights reserved.</p>
-          <p>Community Pro</p>
+          <p>&copy;{new Date().getFullYear()}. All rights reserved. Community Pro</p>
+          <div className="flex items-center gap-x-2">
+            <Link className="link before:bg-white" href="/terms">
+              Terms
+            </Link>
+            <span className="size-1 rounded-full bg-gray-400" />
+            <Link className="link before:bg-white" href="/privacy">
+              Privacy
+            </Link>
+            <span className="size-1 rounded-full bg-gray-400" />
+            <Link className="link before:bg-white" href="/cookies">
+              Cookies
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

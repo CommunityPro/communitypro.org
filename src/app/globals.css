@@ -13,11 +13,7 @@
 
   --color-main: #ffe34d;
   --color-background: #ffffff;
-  --color-foreground-100: #fafaf7;
-  --color-foreground-200: #f4f2ec;
-  --color-text-100: #0a0a0a;
-  --color-text-200: #1a1a1a;
-  --color-text-300: #6b6a66;
+  --color-foreground: #1a1a1a;
   --color-border-default: #e8e5dc;
 
   --radius: 8px;
@@ -26,22 +22,14 @@
 @theme inline {
   --color-main: #ffe34d;
   --color-background: #ffffff;
-  --color-foreground-100: #fafaf7;
-  --color-foreground-200: #f4f2ec;
-  --color-text-100: #0a0a0a;
-  --color-text-200: #1a1a1a;
-  --color-text-300: #6b6a66;
+  --color-foreground: #1a1a1a;
   --color-border-default: #e8e5dc;
 }
 
 .dark {
   --color-main: #ffe34d;
   --color-background: #0a0a0a;
-  --color-foreground-100: #1a1a1a;
-  --color-foreground-200: #2a2a2a;
-  --color-text-100: #fafaf7;
-  --color-text-200: #f4f2ec;
-  --color-text-300: #9f9e98;
+  --color-foreground: #fafaf7;
   --color-border-default: #2d2d2a;
 }
 
@@ -68,7 +56,7 @@
 
   body {
     background: var(--color-background);
-    color: var(--color-text-100);
+    color: var(--color-foreground);
     overflow-x: hidden;
     width: 100%;
     transition: colors 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
