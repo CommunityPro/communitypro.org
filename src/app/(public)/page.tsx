@@ -23,11 +23,11 @@ const Page = () => {
                 ))}
               </AvatarGroup>
               <p className="text-xs text-gray-400">
-                <span className="text-foreground font-semibold">500+</span> pros already inside — from Figma, Stripe,
-                Linear, Vercel & over 15 indie studios
+                <span className="font-semibold text-black dark:text-white">500+</span> pros already inside — from Figma,
+                Stripe, Linear, Vercel & over 15 indie studios
               </p>
             </div>
-            <p className="text-4xl font-bold sm:text-8xl"></p>
+            <h1 className="text-4xl font-medium sm:text-8xl">Where pros actually hang out.</h1>
             <p className="text-sm text-gray-400">
               A members-only community for designers, engineers and builders shipping real things. No gurus, no generic
               threads — just your people, a portfolio that doesn&apos;t suck, and the events you actually want to go
@@ -38,7 +38,7 @@ const Page = () => {
                 <Link href="/join-community">Join Community</Link>
               </Button>
               <Button asChild size="xl" variant="outline">
-                <Link href="/join-community">Join Community</Link>
+                <Link href="/sponsors">Become a Sponsor</Link>
               </Button>
             </div>
           </div>
@@ -64,7 +64,7 @@ const Page = () => {
         <div className="mx-auto grid max-w-7xl grid-cols-4">
           {METRICS.map((metric) => (
             <div className="gap-y-y4 flex flex-col items-center text-center" key={metric.id}>
-              <p className="text-5xl font-bold">{metric.value}</p>
+              <h4 className="text-5xl font-medium">{metric.value}+</h4>
               <p className="font-medium">{metric.label}</p>
               <p className="text-sm text-gray-400">{metric.description}</p>
             </div>
@@ -72,14 +72,24 @@ const Page = () => {
         </div>
       </section>
       <hr />
-      <section className="py-5 sm:py-10"></section>
-      <section className="py-5 sm:py-10"></section>
+      <section className="py-5 sm:py-10">
+        <div className="mx-auto max-w-7xl space-y-4"></div>
+      </section>
+      <section className="py-5 sm:py-10">
+        <div className="mx-auto max-w-7xl space-y-4"></div>
+      </section>
+      <section className="py-5 sm:py-10">
+        <div className="mx-auto max-w-7xl space-y-4"></div>
+      </section>
       <section className="bg-main relative flex min-h-100 items-center justify-center py-10 text-black sm:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-center">
-          <p className="w-full text-center text-6xl font-semibold sm:w-2/3">
+          <h2 className="w-full text-center text-6xl font-medium sm:w-2/3">
             Stop scrolling. Start <span className="italic">shipping</span> with people.
-          </p>
+          </h2>
         </div>
+      </section>
+      <section className="py-10 sm:py-20">
+        <div className="mx-auto flex max-w-7xl flex-col items-center"></div>
       </section>
     </div>
   );

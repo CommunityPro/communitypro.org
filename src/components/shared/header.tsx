@@ -33,7 +33,7 @@ export const Header = () => {
       )}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
-        <div className="relative aspect-square size-10">
+        <div className="relative aspect-square size-8">
           <Image alt="community-pro" className="object-cover" fill sizes="100%" src={image} />
         </div>
         <div className="flex items-center gap-x-5">

@@ -24,6 +24,8 @@
   --color-background: #ffffff;
   --color-foreground: #1a1a1a;
   --color-border-default: #e8e5dc;
+
+  --background-image-earth: url("/assets/images/earth.jpg");
 }
 
 .dark {
@@ -88,6 +90,15 @@
     cursor: not-allowed;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: var(--font-space-grotesk);
+  }
+
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -112,6 +123,12 @@
     -webkit-text-fill-color: #000 !important;
     transition: background-color 5000s ease-in-out 0s;
   }
+}
+
+/* sine wave animation */
+@keyframes sine-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50px); }
 }
 
 /* link interaction */

@@ -32,11 +32,11 @@ client.interceptors.response.use(
 
 export const http = {
   get: <T>(url: string, params?: object) => client.get<T>(url, { params }).then((r) => r.data),
-  post: <T>(url: string, data?: object) =>
+  post: <T>(url: string, data?: unknown) =>
     dedupe(`POST:${url}:${JSON.stringify(data ?? "")}`, () => client.post<T>(url, data).then((r) => r.data)),
-  put: <T>(url: string, data?: object) =>
+  put: <T>(url: string, data?: unknown) =>
     dedupe(`PUT:${url}:${JSON.stringify(data ?? "")}`, () => client.put<T>(url, data).then((r) => r.data)),
-  patch: <T>(url: string, data?: object) =>
+  patch: <T>(url: string, data?: unknown) =>
     dedupe(`PATCH:${url}:${JSON.stringify(data ?? "")}`, () => client.patch<T>(url, data).then((r) => r.data)),
   delete: <T>(url: string, params?: object) => client.delete<T>(url, { params }).then((r) => r.data),
 };

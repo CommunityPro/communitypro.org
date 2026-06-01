@@ -60,4 +60,3 @@ export const LOADING_VERBS = [
   "Predicting",
   "Verifying",
 ];
-

@@ -1,5 +1,5 @@
 export const LIBRARY_CATEGORIES = [
-  { id: "1", name: "All", value: "" },
+  { id: "1", name: "All", value: "all" },
   { id: "2", name: "Computer Science", value: "computer-science" },
   { id: "3", name: "Data Structures & Algorithms", value: "data-structures-algorithms" },
   { id: "4", name: "Operating Systems", value: "operating-systems" },

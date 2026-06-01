@@ -34,14 +34,15 @@ function BrokenChart() {
   );
 }
 
-function ErrorFallback({ onReset }: { onReset: () => void }) {
+function ErrorFallback({ error, onReset }: { error: Error | null; onReset: () => void }) {
+  const message = error?.message || "We&apos;re not exactly sure what happened, but something went wrong.";
   return (
     <div className="flex h-full min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
       <BrokenChart />
       <div className="flex flex-col gap-2">
         <h2 className="text-2xl font-semibold text-slate-700">Oops, that&apos;s our bad</h2>
         <p className="max-w-sm text-sm text-slate-500">
-          We&apos;re not exactly sure what happened, but something went wrong. If you need immediate help, please{" "}
+          {message} If you need immediate help, please{" "}
           <a href="mailto:support@communitypro.org" className="underline underline-offset-2">
             let us know
           </a>
@@ -80,7 +81,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback ?? <ErrorFallback onReset={this.resetErrorBoundary} />;
+      return this.props.fallback ?? <ErrorFallback error={this.state.error} onReset={this.resetErrorBoundary} />;
     }
     return this.props.children;
   }
