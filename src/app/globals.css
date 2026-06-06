@@ -99,6 +99,10 @@
     font-weight: var(--font-space-grotesk);
   }
 
+  code {
+    font-family: var(--font-fira-code);
+  }
+
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -127,8 +131,12 @@
 
 /* sine wave animation */
 @keyframes sine-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50px); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50px);
+  }
 }
 
 /* link interaction */

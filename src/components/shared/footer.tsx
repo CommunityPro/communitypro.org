@@ -11,7 +11,7 @@ export const Footer = () => {
   return (
     <footer className="w-full bg-black py-5 text-white">
       <div className="mx-auto flex max-w-7xl flex-col">
-        <div className="grid w-full grid-cols-3 gap-6 py-4">
+        <div className="grid w-full grid-cols-3 gap-6 py-6">
           <div className="flex flex-col gap-y-4">
             <div className="flex items-center gap-x-2">
               <div className="relative aspect-square w-8">
@@ -29,7 +29,13 @@ export const Footer = () => {
                 <p className="font-medium text-gray-400 uppercase">{section.name}</p>
                 <div className="flex flex-col gap-y-2">
                   {section.routes.map((route) => (
-                    <Link className="link text-sm font-medium before:bg-white" href={route.href} key={route.href}>
+                    <Link
+                      className="link text-sm font-medium before:bg-white"
+                      href={route.href}
+                      key={route.href}
+                      rel={route.target === "_blank" ? "noopener noreferrer" : undefined}
+                      target={route.target}
+                    >
                       {route.name}
                     </Link>
                   ))}

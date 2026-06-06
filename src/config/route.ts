@@ -2,6 +2,7 @@ interface RouteConfig {
   name: string;
   href: string;
   disabled?: boolean;
+  target?: string;
 }
 
 interface SectionConfig {
@@ -11,40 +12,41 @@ interface SectionConfig {
 
 export const HEADER_ROUTES: RouteConfig[] = [
   { href: "/", name: "Discover" },
-  { href: "/events", name: "Events", disabled: true },
-  { href: "/top-contributors", name: "Top Contributors", disabled: true },
-  { href: "/sponsors", name: "Sponsors", disabled: true },
-  { href: "/learn", name: "Learn", disabled: true },
+  { href: "/events", name: "Events" },
+  { href: "/top-contributors", name: "Top Contributors" },
+  { href: "/sponsors", name: "Sponsors" },
+  { href: "/learn", name: "Learn" },
 ];
 
 export const FOOTER_ROUTES: SectionConfig[] = [
   {
     name: "Community",
     routes: [
-      { href: "/events", name: "Events", disabled: true },
-      { href: "/top-contributors", name: "Top Contributors", disabled: true },
-      { href: "/sponsors", name: "Sponsors", disabled: true },
-      { href: "/learn", name: "Learn", disabled: true },
-      { href: "/contact", name: "Contact", disabled: true },
-      { href: "/faq", name: "FAQ", disabled: true },
+      { href: "/events", name: "Events" },
+      { href: "/top-contributors", name: "Top Contributors" },
+      { href: "/sponsors", name: "Sponsors" },
+      { href: "/contact", name: "Contact" },
+      { href: "/faq", name: "FAQ" },
+      { href: "/the-team", name: "The Team" },
     ],
   },
   {
     name: "Resources",
     routes: [
-      { href: "/blog", name: "Blog", disabled: true },
-      { href: "/community", name: "Community", disabled: true },
-      { href: "/e-library", name: "e-Library", disabled: true },
+      { href: "/blog", name: "Blog" },
+      { href: "/learn", name: "Learn" },
+      { href: "/community", name: "Community" },
+      { href: "/e-library", name: "e-Library" },
     ],
   },
   {
     name: "Social",
     routes: [
-      { href: "https://github.com/communitypro", name: "GitHub", disabled: true },
-      { href: "https://x.com/communitypro47", name: "Twitter", disabled: true },
-      { href: "https://chat.whatsapp.com/BMFVTksMg269GdgsviJzLm", name: "WhatsApp", disabled: true },
-      { href: "https://linkedin.com/", name: "LinkedIn", disabled: true },
-      { href: "https://are.na", name: "Are.na", disabled: true },
+      { href: "https://github.com/communitypro", name: "GitHub", target: "_blank" },
+      { href: "https://x.com/communitypro47", name: "Twitter", target: "_blank" },
+      { href: "https://chat.whatsapp.com/BMFVTksMg269GdgsviJzLm", name: "WhatsApp", target: "_blank" },
+      { href: "https://linkedin.com/", name: "LinkedIn", target: "_blank" },
+      { href: "https://are.na", name: "Are.na", target: "_blank" },
     ],
   },
 ];

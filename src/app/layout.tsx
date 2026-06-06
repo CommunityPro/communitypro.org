@@ -1,4 +1,4 @@
-import { Raleway, Space_Grotesk } from "next/font/google";
+import { Fira_Code, Raleway, Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -8,6 +8,7 @@ import { cn } from "@/lib";
 
 const space_grotesk = Space_Grotesk({ style: ["normal"], subsets: ["latin"], variable: "--font-space-grotesk" });
 const raleway = Raleway({ style: ["italic", "normal"], subsets: ["latin"], variable: "--font-raleway" });
+const fira_code = Fira_Code({ style: ["normal"], subsets: ["latin"], variable: "--font-fira-code" });
 
 export const metadata: Metadata = {
   title: "Community Pro",
@@ -20,7 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full", "antialiased", space_grotesk.variable, raleway.variable)}>
+    <html
+      lang="en"
+      className={cn("h-full", "antialiased", space_grotesk.variable, raleway.variable, fira_code.variable)}
+      suppressHydrationWarning
+    >
       <body>
         <ErrorBoundary>
           <QueryProvider>
