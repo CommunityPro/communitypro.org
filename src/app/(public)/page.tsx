@@ -1,15 +1,17 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useRef } from "react";
+import { usePostHog } from "@posthog/react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 import { Avatar, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
-// import { ScrollLock } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { AVATARS, METRICS } from "@/constants";
 
 const Page = () => {
+  const posthong = usePostHog();
+
   const ref = useRef<HTMLDivElement>(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
@@ -30,6 +32,10 @@ const Page = () => {
     rotateX.set(0);
     rotateY.set(0);
   };
+
+  useEffect(() => {
+    posthong.capture("page_view");
+  }, [posthong]);
 
   return (
     <div className="w-screen">
