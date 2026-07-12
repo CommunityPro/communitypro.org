@@ -35,9 +35,11 @@ type AuthState = {
  * const status = useAuthStore((state) => state.status);
  * if (status === "anonymous") return <JoinUsButton />;
  */
+// why: starting at "loading" (not "anonymous") keeps guards from redirecting during the
+// window between first render and AuthProvider's hydrate effect settling the real status.
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
-  status: "anonymous",
+  status: "loading",
   hydrate: async () => {
     set({ status: "loading" });
     try {

@@ -3,7 +3,9 @@ import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { AppProvider, ErrorBoundary, QueryProvider } from "@/components/providers";
+import { AppProvider, ErrorBoundary, PostHogProvider, QueryProvider } from "@/components/providers";
+import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/features/auth";
 
 const space_grotesk = Space_Grotesk({ style: ["normal"], subsets: ["latin"], variable: "--font-space-grotesk" });
 const raleway = Raleway({ style: ["italic", "normal"], subsets: ["latin"], variable: "--font-raleway" });
@@ -28,11 +30,16 @@ export default function RootLayout({
       <body>
         <ErrorBoundary>
           <QueryProvider>
-            <AppProvider>
-              <ThemeProvider attribute="class" defaultTheme="light">
-                {children}
-              </ThemeProvider>
-            </AppProvider>
+            <PostHogProvider>
+              <AuthProvider>
+                <AppProvider>
+                  <ThemeProvider attribute="class" defaultTheme="light">
+                    {children}
+                    <Toaster />
+                  </ThemeProvider>
+                </AppProvider>
+              </AuthProvider>
+            </PostHogProvider>
           </QueryProvider>
         </ErrorBoundary>
       </body>
