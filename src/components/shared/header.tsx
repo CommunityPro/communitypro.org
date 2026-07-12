@@ -18,15 +18,17 @@ export const Header = () => {
 
   return (
     <header className="fixed top-7 left-1/2 z-50! mx-auto flex w-full max-w-7xl -translate-x-1/2 items-center justify-between rounded-md border bg-white/50 px-3 py-2 backdrop-blur backdrop-filter dark:bg-black/50">
-      <div className="relative aspect-square size-8">
+      <Link className="relative block aspect-square size-8" href="/">
         <Image alt="community-pro" className="object-cover" fill sizes="100%" src={image} />
-      </div>
+      </Link>
       <div className="flex items-center gap-x-5">
         {HEADER_ROUTES.map((route) => (
           <Link
             className={cn(
-              "link text-sm font-medium",
-              route.href === normalize(pathname) ? "underline underline-offset-4" : "before:bg-foreground",
+              "relative text-sm",
+              route.href === normalize(pathname)
+                ? "font-bold before:scale-x-100"
+                : "link before:bg-foreground font-medium",
             )}
             href={route.href}
             key={route.href}

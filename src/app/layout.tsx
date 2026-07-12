@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { AppProvider, ErrorBoundary, QueryProvider } from "@/components/providers";
-import { cn } from "@/lib";
+import { AuthProvider } from "@/features/auth";
 
 const space_grotesk = Space_Grotesk({ style: ["normal"], subsets: ["latin"], variable: "--font-space-grotesk" });
 const raleway = Raleway({ style: ["italic", "normal"], subsets: ["latin"], variable: "--font-raleway" });
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", space_grotesk.variable, raleway.variable, fira_code.variable)}
+      className={`h-full antialiased ${space_grotesk.variable} ${raleway.variable} ${fira_code.variable}`}
       suppressHydrationWarning
     >
       <body>

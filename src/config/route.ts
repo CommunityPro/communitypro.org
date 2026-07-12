@@ -12,22 +12,21 @@ interface SectionConfig {
 
 export const HEADER_ROUTES: RouteConfig[] = [
   { href: "/", name: "Discover" },
-  { href: "/events", name: "Events" },
-  { href: "/top-contributors", name: "Top Contributors" },
-  { href: "/sponsors", name: "Sponsors" },
   { href: "/learn", name: "Learn" },
+  { href: "/events", name: "Events" },
+  { href: "/sponsors", name: "Sponsors" },
 ];
 
 export const FOOTER_ROUTES: SectionConfig[] = [
   {
     name: "Community",
     routes: [
+      { href: "/about", name: "About" },
       { href: "/events", name: "Events" },
       { href: "/top-contributors", name: "Top Contributors" },
       { href: "/sponsors", name: "Sponsors" },
       { href: "/contact", name: "Contact" },
       { href: "/faq", name: "FAQ" },
-      { href: "/the-team", name: "The Team" },
     ],
   },
   {

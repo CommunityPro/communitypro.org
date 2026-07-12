@@ -48,7 +48,7 @@
     margin: 0;
     padding: 0;
     scrollbar-width: none;
-    font-family: var(--font-space-grotesk);
+    font-family: var(--font-raleway);
     user-select: none;
   }
 
@@ -96,7 +96,7 @@
   h4,
   h5,
   h6 {
-    font-weight: var(--font-space-grotesk);
+    font-family: var(--font-space-grotesk);
   }
 
   code {
@@ -126,16 +126,6 @@
     -webkit-box-shadow: 0 0 0 30px transaprent inset !important;
     -webkit-text-fill-color: #000 !important;
     transition: background-color 5000s ease-in-out 0s;
-  }
-}
-
-/* sine wave animation */
-@keyframes sine-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50px);
   }
 }
 

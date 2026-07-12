@@ -2,14 +2,13 @@ import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from "axio
 
 type AuthedRequest = InternalAxiosRequestConfig & { _retry?: boolean };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const inflight = new Map<string, Promise<any>>();
+const inflight = new Map<string, Promise<unknown>>();
 
 function dedupe<T>(key: string, factory: () => Promise<T>): Promise<T> {
-  if (inflight.has(key)) return inflight.get(key)!;
-  const p = factory().finally(() => inflight.delete(key));
-  inflight.set(key, p);
-  return p;
+  if (inflight.has(key)) return inflight.get(key) as Promise<T>;
+  const promise = factory().finally(() => inflight.delete(key));
+  inflight.set(key, promise);
+  return promise;
 }
 
 export const client: AxiosInstance = axios.create({

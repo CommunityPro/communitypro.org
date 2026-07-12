@@ -1,16 +1,46 @@
 "use client";
 
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 
 import { Avatar, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
-import { AVATARS, METRICS } from "@/constants";
+// import { ScrollLock } from "@/components/shared";
 import { Button } from "@/components/ui/button";
+import { AVATARS, METRICS } from "@/constants";
 
 const Page = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springX = useSpring(rotateX, { stiffness: 200, damping: 20 });
+  const springY = useSpring(rotateY, { stiffness: 200, damping: 20 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const { left, top, width, height } = el.getBoundingClientRect();
+    const dx = (e.clientX - (left + width / 2)) / (width / 2);
+    const dy = (e.clientY - (top + height / 2)) / (height / 2);
+    rotateY.set(dx * 35);
+    rotateX.set(-dy * 35);
+  };
+
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
   return (
     <div className="w-screen">
-      <section className="h-screen w-full sm:py-20">
-        <div className="mx-auto grid h-full max-w-7xl grid-cols-2">
+      <section
+        className="h-screen w-full sm:py-20"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        ref={ref}
+        style={{ perspective: "600px" }}
+      >
+        <div className="mx-auto grid h-full max-w-7xl grid-cols-2 gap-6">
           <div className="flex flex-col justify-center gap-y-5">
             <div className="flex w-full items-center gap-x-4">
               <AvatarGroup>
@@ -40,7 +70,12 @@ const Page = () => {
               </Button>
             </div>
           </div>
-          <div className=""></div>
+          <div className="grid place-items-center" style={{ perspective: "600px" }}>
+            <motion.div
+              className="bg-main flex size-40 flex-col items-center justify-center gap-y-4 py-6"
+              style={{ rotateX: springX, rotateY: springY }}
+            ></motion.div>
+          </div>
         </div>
       </section>
       <section className="w-full py-10 sm:py-20">
