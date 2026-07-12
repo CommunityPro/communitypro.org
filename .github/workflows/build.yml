@@ -32,4 +32,9 @@ jobs:
         run: pnpm run check-code
 
       - name: build
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:5080
+          NEXT_PUBLIC_POSTHOG_KEY: 
+          NEXT_PUBLIC_GITHUB_ORG: https://github.com/CommunityPro
+          NEXT_PUBLIC_PRACTICE_REPO: https://github.com/CommunityPro/Practice-Contribution
         run: pnpm run build

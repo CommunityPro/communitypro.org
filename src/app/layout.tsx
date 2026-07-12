@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { AppProvider, ErrorBoundary, QueryProvider } from "@/components/providers";
-import { AuthProvider } from "@/features/auth";
 
 const space_grotesk = Space_Grotesk({ style: ["normal"], subsets: ["latin"], variable: "--font-space-grotesk" });
 const raleway = Raleway({ style: ["italic", "normal"], subsets: ["latin"], variable: "--font-raleway" });
