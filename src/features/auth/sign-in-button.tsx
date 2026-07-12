@@ -18,11 +18,7 @@ const GithubMark = () => (
  * @example
  * <SignInButton size="xl" />
  */
-export const SignInButton = ({
-  className,
-  size = "lg",
-  ...props
-}: Omit<ComponentProps<typeof Button>, "asChild">) => (
+export const SignInButton = ({ className, size = "lg", ...props }: Omit<ComponentProps<typeof Button>, "asChild">) => (
   <Button asChild size={size} className={cn("gap-2", className)} {...props}>
     <a href="/api/auth/login">
       <GithubMark />
