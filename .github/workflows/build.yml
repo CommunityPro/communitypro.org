@@ -1,0 +1,40 @@
+name: build-check
+
+on:
+  pull_request:
+    branches:
+      - main
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check-out
+        uses: actions/checkout@v4
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: set-up-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: check code
+        run: pnpm run check-code
+
+      - name: build
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:5080
+          NEXT_PUBLIC_POSTHOG_KEY: 
+          NEXT_PUBLIC_GITHUB_ORG: https://github.com/CommunityPro
+          NEXT_PUBLIC_PRACTICE_REPO: https://github.com/CommunityPro/Practice-Contribution
+        run: pnpm run build
