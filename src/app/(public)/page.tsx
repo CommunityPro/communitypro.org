@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { AVATARS, METRICS } from "@/constants";
 
 const Page = () => {
-  const posthong = usePostHog()
+  const posthong = usePostHog();
 
   const ref = useRef<HTMLDivElement>(null);
   const rotateX = useMotionValue(0);
@@ -34,8 +34,8 @@ const Page = () => {
   };
 
   useEffect(() => {
-    posthong.capture('page_view')
-  },[posthong])
+    posthong.capture("page_view");
+  }, [posthong]);
 
   return (
     <div className="w-screen">
