@@ -2,9 +2,8 @@
 
 import type { ReactNode } from "react";
 
-import { Loader } from "@/components/shared";
-
 import { useAuthGuard, type AuthRequirement } from "./use-auth-guard";
+import { Loader } from "@/components/shared";
 
 type GuardGateProps = {
   requirement: AuthRequirement;

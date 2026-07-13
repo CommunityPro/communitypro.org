@@ -1,12 +1,11 @@
 "use client";
 
-import { RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-
 import { useAuthStore } from "./store";
 
 /**
