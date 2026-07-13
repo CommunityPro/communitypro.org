@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Avatar, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { AVATARS, METRICS } from "@/constants";
+import { MembersSpotlightSection } from "@/features/members";
 
 const Page = () => {
   const posthong = usePostHog();
@@ -97,7 +98,9 @@ const Page = () => {
       </section>
       <hr />
       <section className="py-5 sm:py-10">
-        <div className="mx-auto max-w-7xl space-y-4"></div>
+        <div className="mx-auto max-w-7xl space-y-4">
+          <MembersSpotlightSection />
+        </div>
       </section>
       <section className="py-5 sm:py-10">
         <div className="mx-auto max-w-7xl space-y-4"></div>

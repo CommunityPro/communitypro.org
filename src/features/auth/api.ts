@@ -1,7 +1,6 @@
-import { apiFetch } from "@/lib/api";
-
 import { clearSessionToken } from "./session";
 import type { AuthUser } from "./store";
+import { apiFetch } from "@/lib/api";
 
 /** Raw shape of the backend `GET /me` response (status uses backend PascalCase spelling). */
 export type MeResponse = {

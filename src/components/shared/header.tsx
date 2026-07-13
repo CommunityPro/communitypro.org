@@ -13,7 +13,7 @@ import { cn, normalize } from "@/lib";
 const image = "/assets/images/community-pro.png";
 
 export const Header = () => {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const pathname = usePathname();
 
   return (
@@ -27,7 +27,7 @@ export const Header = () => {
             className={cn(
               "relative text-sm",
               route.href === normalize(pathname)
-                ? "font-bold before:scale-x-100"
+                ? "font-bold before:scale-x-100 border-b-2 border-main"
                 : "link before:bg-foreground font-medium",
             )}
             href={route.href}
@@ -38,8 +38,13 @@ export const Header = () => {
         ))}
       </div>
       <div className="flex items-center gap-x-5">
-        <Button onClick={() => setTheme(theme === "light" ? "dark" : "light")} size="icon" variant="outline">
-          {theme === "light" ? <Moon className="size-4" /> : <Sun className="size-4" />}
+        <Button
+          onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+          size="icon"
+          variant="outline"
+        >
+          <Moon className="size-4 dark:hidden" />
+          <Sun className="size-4 hidden dark:block" />
         </Button>
         <Button asChild>
           <Link href="/join-community">Join</Link>

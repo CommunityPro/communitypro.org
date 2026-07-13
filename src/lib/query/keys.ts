@@ -25,4 +25,5 @@ export const membersKeys = {
   details: () => [...membersKeys.all, "detail"] as const,
   detail: (id: string) => [...membersKeys.details(), id] as const,
   spotlight: () => [...membersKeys.all, "spotlight"] as const,
+  me: () => [...membersKeys.all, "me"] as const,
 };

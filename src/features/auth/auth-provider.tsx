@@ -3,10 +3,10 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 
+import { useAuthStore } from "./store";
 // why: importing the session module registers the access-token provider on apiFetch
 // (module side effect) before any query runs.
 import "./session";
-import { useAuthStore } from "./store";
 
 /**
  * App-level auth bootstrap: registers the session token provider and hydrates the auth

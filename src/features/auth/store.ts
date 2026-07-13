@@ -1,5 +1,4 @@
-import { create } from "zustand";
-
+import { createReportableStore } from "@/store/middleware";
 import { fetchMe } from "./api";
 
 /** Signed-in user shape returned by `GET /me`, normalized to client conventions. */
@@ -37,7 +36,7 @@ type AuthState = {
  */
 // why: starting at "loading" (not "anonymous") keeps guards from redirecting during the
 // window between first render and AuthProvider's hydrate effect settling the real status.
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = createReportableStore<AuthState>((set) => ({
   user: null,
   status: "loading",
   hydrate: async () => {
