@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { EXPERIENCE_LEVELS } from "./types";
+import { EXPERIENCE_LEVELS, MEMBER_ROLES } from "./types";
 
 /** An optional URL field: accepts a valid URL, or an empty string normalized to `undefined`. */
 const optionalUrl = z
@@ -22,7 +22,9 @@ export const profileSchema = z.object({
     .trim()
     .min(1, "Display name is required.")
     .max(100, "Display name must be 100 characters or fewer."),
-  title: z.string().trim().min(1, "Title is required.").max(100, "Title must be 100 characters or fewer."),
+  title: z.string().refine((value) => (MEMBER_ROLES as readonly string[]).includes(value), {
+    message: "Choose a role.",
+  }),
   bio: z
     .string()
     .trim()

@@ -2,21 +2,31 @@
 
 import { SpotlightCarousel } from "./spotlight-carousel";
 
+import { Reveal } from "@/features/home";
+
 /**
- * Self-contained "Member Spotlight" section for the home page: heading plus the
- * spotlight carousel. Mount directly inside a `<section>` wrapper.
+ * Self-contained "Member Spotlight" section for the home page: eyebrow label,
+ * editorial heading, and the spotlight carousel — matching the other home
+ * sections. Mount directly inside a `<section>` wrapper.
  *
  * @returns The spotlight section.
  * @example
- * <section className="py-5 sm:py-10">
- *   <div className="mx-auto max-w-7xl space-y-4">
+ * <section className="w-full py-28 sm:py-44">
+ *   <div className="mx-auto max-w-7xl px-4">
  *     <MembersSpotlightSection />
  *   </div>
  * </section>
  */
 export const MembersSpotlightSection = () => (
-  <div className="space-y-6">
-    <h2 className="text-3xl font-medium sm:text-4xl">Member Spotlight</h2>
-    <SpotlightCarousel />
+  <div className="space-y-20">
+    <Reveal>
+      <p className="text-muted-foreground mb-8 font-mono text-xs tracking-[0.35em] uppercase">[ Member Spotlight ]</p>
+      <h2 className="max-w-3xl text-4xl leading-tight font-medium text-balance sm:text-6xl">
+        Meet the people you&apos;ll ship with.
+      </h2>
+    </Reveal>
+    <Reveal delay={0.1}>
+      <SpotlightCarousel />
+    </Reveal>
   </div>
 );

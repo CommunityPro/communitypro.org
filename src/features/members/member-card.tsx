@@ -1,10 +1,9 @@
 import { ExternalLink } from "lucide-react";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 import type { MemberProfile } from "./types";
+import Image from "next/image";
 
 const MAX_VISIBLE_SKILLS = 4;
 
@@ -30,36 +29,52 @@ export const MemberCard = ({ member }: { member: MemberProfile }) => {
   const overflowCount = member.skills.length - visibleSkills.length;
 
   return (
-    <div className="border-border-default bg-background flex h-full w-full flex-col gap-4 rounded-2xl border p-5 transition-transform hover:-translate-y-1 hover:shadow-lg">
-      <div className="flex items-center gap-3">
-        <Avatar size="lg">
-          {member.avatarUrl && <AvatarImage src={member.avatarUrl} alt={member.displayName} />}
-          <AvatarFallback>{initialsOf(member.displayName)}</AvatarFallback>
-        </Avatar>
-        <div className="min-w-0">
-          <p className="truncate font-semibold">{member.displayName}</p>
-          <p className="text-muted-foreground truncate text-sm">{member.title}</p>
+    <div className="group relative h-80 w-full overflow-hidden rounded-xl border border-border shadow-sm">
+      {/* Avatar */}
+      {member.avatarUrl ? (
+        <Image alt={member.displayName} className="object-cover" fill sizes="100%" src={member.avatarUrl} />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-muted text-4xl font-bold text-muted-foreground">
+          {initialsOf(member.displayName)}
+        </div>
+      )}
+
+      {/* Gradient overlay always visible at bottom */}
+      <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 to-transparent px-4 pb-3 pt-10">
+        <p className="truncate text-lg font-semibold text-white">{member.displayName}</p>
+      </div>
+
+      {/* Hover panel */}
+      <div className="absolute inset-x-0 bottom-0 translate-y-full bg-black/85 p-4 backdrop-blur-sm transition-transform duration-300 group-hover:translate-y-0">
+        <p className="truncate text-base font-semibold text-white">{member.displayName}</p>
+        <p className="text-sm text-white/70">{member.title}</p>
+
+        {member.bio && (
+          <p className="mt-2 line-clamp-2 text-xs text-white/60">{member.bio}</p>
+        )}
+
+        {member.skills.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1">
+            {visibleSkills.map((skill) => (
+              <Badge key={skill} variant="secondary" className="text-xs">{skill}</Badge>
+            ))}
+            {overflowCount > 0 && (
+              <Badge variant="outline" className="text-xs text-white/70">+{overflowCount}</Badge>
+            )}
+          </div>
+        )}
+
+        <div className="mt-3 flex items-center justify-between">
+          <Badge className="text-xs">{member.experience}</Badge>
+          {member.portfolioUrl && (
+            <Button asChild size="sm" variant="ghost" className="h-7 gap-1 px-2 text-xs text-white hover:text-white hover:bg-white/20">
+              <a href={member.portfolioUrl} target="_blank" rel="noopener noreferrer">
+                Portfolio <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
+          )}
         </div>
       </div>
-
-      <div className="flex flex-wrap items-center gap-1.5">
-        <Badge variant="outline">{member.experience}</Badge>
-        {visibleSkills.map((skill) => (
-          <Badge key={skill} variant="secondary">
-            {skill}
-          </Badge>
-        ))}
-        {overflowCount > 0 && <Badge variant="ghost">+{overflowCount}</Badge>}
-      </div>
-
-      {member.portfolioUrl && (
-        <Button asChild variant="outline" size="sm" className="mt-auto gap-1.5">
-          <a href={member.portfolioUrl} target="_blank" rel="noopener noreferrer">
-            View Portfolio
-            <ExternalLink />
-          </a>
-        </Button>
-      )}
     </div>
   );
 };

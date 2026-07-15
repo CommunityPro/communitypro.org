@@ -4,6 +4,23 @@ export const EXPERIENCE_LEVELS = ["Junior", "Mid", "Senior", "Lead"] as const;
 /** Union of valid `MemberProfile.experience` values. */
 export type ExperienceLevel = (typeof EXPERIENCE_LEVELS)[number];
 
+/** Roles a member can pick for their profile; stored as `title` on the backend. */
+export const MEMBER_ROLES = [
+  "Frontend Developer",
+  "Backend Developer",
+  "Fullstack Developer",
+  "Mobile Developer",
+  "DevOps Engineer",
+  "Data Engineer",
+  "Machine Learning Engineer",
+  "UI/UX Designer",
+  "QA Engineer",
+  "Product Manager",
+] as const;
+
+/** Union of valid member role values. */
+export type MemberRole = (typeof MEMBER_ROLES)[number];
+
 /** A member's public profile, as returned by every `/members/*` endpoint. */
 export type MemberProfile = {
   id: string;
