@@ -82,7 +82,7 @@ export const Hero = ({ featured, stats, faces }: HeroProps) => {
         </motion.div>
       </div>
       {featured && (
-        <motion.div {...enter(0.36)} className="relative w-full">
+        <motion.div {...enter(0.36)} className="relative min-h-150 w-full">
           <div aria-hidden className="bg-main/25 absolute inset-x-1/4 top-1/4 bottom-1/4 rounded-full blur-3xl" />
           {reducedMotion ? (
             <div className="border-border-default bg-background relative mx-auto w-fit rounded-3xl border shadow-xl">

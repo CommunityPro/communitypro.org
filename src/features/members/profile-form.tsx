@@ -9,7 +9,7 @@ import type { z } from "zod";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { EXPERIENCE_LEVELS, type MemberProfile } from "./types";
+import { EXPERIENCE_LEVELS, MEMBER_ROLES, type MemberProfile } from "./types";
 import { useMyProfile, useUpdateProfile } from "./hooks";
 import { Textarea } from "@/components/ui/textarea";
 import { profileSchema } from "./profile-schema";
@@ -26,7 +26,8 @@ const MAX_AVATAR_BYTES = 2 * 1024 * 1024;
 
 const toFormInput = (profile: MemberProfile): ProfileFormInput => ({
   displayName: profile.displayName,
-  title: profile.title,
+  // Legacy profiles may hold a free-text title; force a fresh role pick for those.
+  title: (MEMBER_ROLES as readonly string[]).includes(profile.title) ? profile.title : "",
   bio: profile.bio ?? "",
   portfolioUrl: profile.portfolioUrl ?? "",
   githubUrl: profile.githubUrl ?? "",
@@ -202,10 +203,25 @@ export const ProfileForm = () => {
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="title" className="text-sm font-medium">
-          Title
-        </label>
-        <Input id="title" placeholder="Senior Backend Dev" {...form.register("title")} />
+        <span className="text-sm font-medium">Role</span>
+        <Controller
+          control={form.control}
+          name="title"
+          render={({ field }) => (
+            <Select value={field.value} onValueChange={field.onChange}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Choose a role" />
+              </SelectTrigger>
+              <SelectContent>
+                {MEMBER_ROLES.map((role) => (
+                  <SelectItem key={role} value={role}>
+                    {role}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
         {form.formState.errors.title && (
           <p className="text-destructive text-xs">{form.formState.errors.title.message}</p>
         )}

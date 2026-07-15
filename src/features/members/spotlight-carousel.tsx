@@ -32,7 +32,7 @@ export const SpotlightCarousel = () => {
   return (
     <div className="flex snap-x snap-mandatory scrollbar-none gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
       {members.map((member) => (
-        <div key={member.id} className="w-72 shrink-0 snap-start">
+        <div key={member.id} className="aspect-2/3 w-72 shrink-0 snap-start">
           <MemberCard member={member} />
         </div>
       ))}

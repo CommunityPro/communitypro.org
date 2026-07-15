@@ -86,7 +86,7 @@ export const Community = ({ contributors, wall }: CommunityProps) => {
                     <span className="text-muted-foreground font-mono text-xs">#{index + 1}</span>
                   </div>
                   <div className="mt-auto space-y-1">
-                    <p className="text-xl font-medium">{contributor.name ?? contributor.login}</p>
+                    <p className="text-xl font-medium text-black">{contributor.name ?? contributor.login}</p>
                     <p className="text-muted-foreground font-mono text-xs">@{contributor.login}</p>
                   </div>
                   <p className="font-mono text-sm">

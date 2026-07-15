@@ -47,13 +47,12 @@ export default async function Page() {
           <Community contributors={data.contributors} wall={data.wall} />
         </div>
       </section>
-      <section className="w-full py-16 sm:py-24">
+      <section className="w-full py-28 sm:py-44">
         <div className="mx-auto max-w-7xl px-4">
           <MembersSpotlightSection />
         </div>
       </section>
       <Cta stats={data.stats} />
-      <section className=""></section>
     </div>
   );
 }
