@@ -50,13 +50,13 @@ const HeroCard3d = ({ member, practiceRepoName }: HeroCard3dProps) => {
       <pointLight color="#ffe34d" intensity={30} position={[-4, -2, 4]} />
       <CardRig>
         <Float floatIntensity={0.7} rotationIntensity={0.25} speed={2}>
-          <RoundedBox args={[4, 5, 0.16]} radius={0.14} smoothness={4}>
+          <RoundedBox args={[3.2, 4, 0.16]} radius={0.14} smoothness={4}>
             <meshPhysicalMaterial clearcoat={1} clearcoatRoughness={0.6} color={cardColor} roughness={0.4} />
           </RoundedBox>
           <Html
             center
             className="pointer-events-none select-none"
-            distanceFactor={2.85}
+            distanceFactor={2.4}
             position={[0, 0, 0.09]}
             transform
           >
