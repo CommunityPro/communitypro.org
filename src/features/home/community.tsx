@@ -70,7 +70,7 @@ export const Community = ({ contributors, wall }: CommunityProps) => {
             {podium.map((contributor, index) => (
               <Reveal delay={index * 0.08} key={contributor.login}>
                 <Link
-                  className="border-border-default bg-surface group flex h-full flex-col gap-y-6 rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                  className="border-border-default bg-main group flex h-full flex-col gap-y-6 rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
                   href={contributor.htmlUrl}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -87,13 +87,13 @@ export const Community = ({ contributors, wall }: CommunityProps) => {
                   </div>
                   <div className="mt-auto space-y-1">
                     <p className="text-xl font-medium text-black">{contributor.name ?? contributor.login}</p>
-                    <p className="text-muted-foreground font-mono text-xs">@{contributor.login}</p>
+                    <p className="font-mono text-xs">@{contributor.login}</p>
                   </div>
                   <p className="font-mono text-sm">
-                    <span className="bg-main rounded-full px-2.5 py-1 font-semibold text-black">
+                    <span className="bg-surface rounded-full px-2.5 py-1 font-semibold text-black">
                       {contributor.contributions}
                     </span>
-                    <span className="text-muted-foreground ml-2.5">merged PRs</span>
+                    <span className="ml-2.5">merged PRs</span>
                   </p>
                 </Link>
               </Reveal>
