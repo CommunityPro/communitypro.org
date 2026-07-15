@@ -33,7 +33,7 @@ export default function RootLayout({
             <PostHogProvider>
               <AuthProvider>
                 <AppProvider>
-                  <ThemeProvider attribute="class" defaultTheme="light">
+                  <ThemeProvider attribute="class" defaultTheme="dark">
                     {children}
                     <Toaster />
                   </ThemeProvider>

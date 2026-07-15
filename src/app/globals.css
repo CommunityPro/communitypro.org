@@ -15,6 +15,10 @@
   --color-background: #ffffff;
   --color-foreground: #1a1a1a;
   --color-border-default: #e8e5dc;
+  --color-surface: #faf9f5;
+  --color-panel: #0c0c0a;
+  --color-panel-foreground: #fafaf7;
+  --color-muted-foreground: #8a8678;
 
   --radius: 8px;
 }
@@ -24,8 +28,12 @@
   --color-background: #ffffff;
   --color-foreground: #1a1a1a;
   --color-border-default: #e8e5dc;
+  --color-surface: #faf9f5;
+  --color-panel: #0c0c0a;
+  --color-panel-foreground: #fafaf7;
+  --color-muted-foreground: #8a8678;
 
-  --background-image-earth: url("/assets/images/earth.jpg");
+  --background-image-dot: url("/assets/images/dot-background.jpeg");
 }
 
 .dark {
@@ -33,6 +41,10 @@
   --color-background: #0a0a0a;
   --color-foreground: #fafaf7;
   --color-border-default: #2d2d2a;
+  --color-surface: #101010;
+  --color-panel: #101010;
+  --color-panel-foreground: #fafaf7;
+  --color-muted-foreground: #8f8c81;
 }
 
 @layer base {
@@ -126,6 +138,35 @@
     -webkit-box-shadow: 0 0 0 30px transaprent inset !important;
     -webkit-text-fill-color: #000 !important;
     transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+/* infinite avatar marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 60s linear infinite;
+  width: max-content;
+}
+
+.marquee-track-reverse {
+  animation-direction: reverse;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }
 

@@ -30,7 +30,7 @@ export const SpotlightCarousel = () => {
   if (!members || members.length === 0) return null;
 
   return (
-    <div className="flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+    <div className="flex snap-x snap-mandatory scrollbar-none gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
       {members.map((member) => (
         <div key={member.id} className="w-72 shrink-0 snap-start">
           <MemberCard member={member} />

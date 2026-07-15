@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Raise a pull request in the practice repo to activate your membership.",
 };
 
-const steps = [
+const STEPS = [
   {
     icon: GitPullRequest,
     title: "Open a pull request",
@@ -38,11 +38,10 @@ export default function Page() {
           you&apos;re in.
         </p>
       </div>
-
       <ol className="grid w-full gap-4 sm:grid-cols-3">
-        {steps.map(({ icon: Icon, title, body }, index) => (
+        {STEPS.map(({ icon: Icon, title, body }, index) => (
           <li key={title} className="border-border-default flex flex-col items-center gap-3 rounded-2xl border p-6">
-            <span className="bg-main/10 text-main grid size-10 place-items-center rounded-full">
+            <span className="bg-main/10 text-main grid size-10 place-items-center rounded-md">
               <Icon className="size-5" />
             </span>
             <h2 className="font-semibold">
@@ -52,7 +51,6 @@ export default function Page() {
           </li>
         ))}
       </ol>
-
       <div className="flex flex-col items-center gap-4 sm:flex-row">
         <a
           href={env.practiceRepoUrl}
