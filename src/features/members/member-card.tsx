@@ -29,18 +29,18 @@ export const MemberCard = ({ member }: { member: MemberProfile }) => {
   const overflowCount = member.skills.length - visibleSkills.length;
 
   return (
-    <div className="group relative h-80 w-full overflow-hidden rounded-xl border border-border shadow-sm">
+    <div className="group border-border relative h-80 w-full overflow-hidden rounded-xl border shadow-sm">
       {/* Avatar */}
       {member.avatarUrl ? (
         <Image alt={member.displayName} className="object-cover" fill sizes="100%" src={member.avatarUrl} />
       ) : (
-        <div className="flex h-full w-full items-center justify-center bg-muted text-4xl font-bold text-muted-foreground">
+        <div className="bg-muted text-muted-foreground flex h-full w-full items-center justify-center text-4xl font-bold">
           {initialsOf(member.displayName)}
         </div>
       )}
 
       {/* Gradient overlay always visible at bottom */}
-      <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 to-transparent px-4 pb-3 pt-10">
+      <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 to-transparent px-4 pt-10 pb-3">
         <p className="truncate text-lg font-semibold text-white">{member.displayName}</p>
       </div>
 
@@ -49,17 +49,19 @@ export const MemberCard = ({ member }: { member: MemberProfile }) => {
         <p className="truncate text-base font-semibold text-white">{member.displayName}</p>
         <p className="text-sm text-white/70">{member.title}</p>
 
-        {member.bio && (
-          <p className="mt-2 line-clamp-2 text-xs text-white/60">{member.bio}</p>
-        )}
+        {member.bio && <p className="mt-2 line-clamp-2 text-xs text-white/60">{member.bio}</p>}
 
         {member.skills.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1">
             {visibleSkills.map((skill) => (
-              <Badge key={skill} variant="secondary" className="text-xs">{skill}</Badge>
+              <Badge key={skill} variant="secondary" className="text-xs">
+                {skill}
+              </Badge>
             ))}
             {overflowCount > 0 && (
-              <Badge variant="outline" className="text-xs text-white/70">+{overflowCount}</Badge>
+              <Badge variant="outline" className="text-xs text-white/70">
+                +{overflowCount}
+              </Badge>
             )}
           </div>
         )}
@@ -67,7 +69,12 @@ export const MemberCard = ({ member }: { member: MemberProfile }) => {
         <div className="mt-3 flex items-center justify-between">
           <Badge className="text-xs">{member.experience}</Badge>
           {member.portfolioUrl && (
-            <Button asChild size="sm" variant="ghost" className="h-7 gap-1 px-2 text-xs text-white hover:text-white hover:bg-white/20">
+            <Button
+              asChild
+              size="sm"
+              variant="ghost"
+              className="h-7 gap-1 px-2 text-xs text-white hover:bg-white/20 hover:text-white"
+            >
               <a href={member.portfolioUrl} target="_blank" rel="noopener noreferrer">
                 Portfolio <ExternalLink className="h-3 w-3" />
               </a>
